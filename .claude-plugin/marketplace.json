@@ -1,0 +1,14 @@
+{
+  "name": "dca",
+  "owner": {
+    "name": "develku",
+    "url": "https://github.com/develku"
+  },
+  "plugins": [
+    {
+      "name": "dca",
+      "source": "./",
+      "description": "Debate-Critique-Agreement — multi-model decision gate with a verified cross-model Codex critique leg"
+    }
+  ]
+}
