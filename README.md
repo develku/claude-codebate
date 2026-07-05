@@ -9,8 +9,10 @@ forcing a structured, auditable process around your riskiest decisions:
 
 1. **Commit your position first**, in writing, before any critique.
 2. **Get a genuine cross-model critique** — a *different* model (Codex / GPT via
-   the `codex` CLI) challenges each claim, having never seen your conclusion.
-3. **Respond point-by-point**, citing evidence for every disposition.
+   the `codex` CLI) independently critiques the same evidence and options, having
+   never seen your position.
+3. **Respond point-by-point** to the critic's findings, citing evidence for every
+   disposition.
 4. **Converge** into one verdict, captured in an auditable artifact file.
 
 You invoke codebate on the **stakes** of a decision — a design fork, an
@@ -24,9 +26,9 @@ until the debate is done. It's off by default (see [The hook](#the-hook-judgment
 ```mermaid
 flowchart TD
     A["High-stakes decision<br/>design fork · irreversible change · hard problem"]:::start
-    A --> B["<b>1 · Commit your position first</b><br/>Claude / Opus — in writing, before any critique"]:::pillar
-    B --> C["<b>2 · Cross-model critique</b><br/>a provably different model (Codex / GPT)<br/>challenges each claim, unseen your conclusion"]:::pillar
-    C --> D["3 · Respond point-by-point<br/>cite evidence for every disposition"]:::step
+    A --> B["<b>1 · Commit your position first</b><br/>Claude / Opus — in writing; the critic never sees it"]:::pillar
+    B --> C["<b>2 · Cross-model critique</b><br/>a provably different model (Codex / GPT)<br/>independently critiques the same evidence & options"]:::pillar
+    C --> D["3 · Respond point-by-point<br/>engage each of the critic's points, cite evidence"]:::step
     D --> E["4 · Converge → one verdict"]:::step
     E --> F["Auditable artifact<br/>~/.claude/dca/&lt;timestamp&gt;_topic.md<br/>question · verbatim critique · model id · verdict"]:::artifact
 
