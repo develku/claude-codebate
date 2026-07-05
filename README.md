@@ -33,6 +33,34 @@ it's how *independent* it is. codebate is built around protecting that independe
 (commit-first, self-contained evidence, verbatim critique) rather than maximizing
 the critic's power.
 
+## "Isn't there already a Codex plugin?" — access vs. process
+
+Yes — [`openai/codex-plugin-cc`](https://github.com/openai/codex-plugin-cc) is
+excellent, and codebate does **not** replace it. They solve different problems:
+
+| | Codex plugin (`codex-plugin-cc`) | codebate |
+|---|---|---|
+| **What it gives you** | *Access* — Codex as a tool/agent inside Claude Code: delegate a task, get a second implementation, run a command. | *Process* — a disciplined decision procedure that happens to use a second model as one step. |
+| **You reach for it when** | you want another model to **do work**. | you want to **de-risk a decision** you're about to commit to. |
+| **Core primitive** | a capability (call Codex). | a protocol (commit-first → independent critique → converge → artifact). |
+| **What you're left with** | Codex's output. | an auditable record of *why* the call went the way it did. |
+
+The distinction is **access vs. process**. A raw Codex call is a second opinion
+*on tap*; codebate is the second-opinion *ceremony* — it decides **when** a decision
+is high-stakes enough to warrant one, forces you to **commit your position before**
+you hear the critique (so you can't rubber-stamp), guarantees the critic is a
+**provably different** model (the hollow-provenance bug above), and leaves an
+**artifact** so the reasoning survives the session.
+
+**Why not just build this on top of the Codex plugin?** Because a plugin wrapper is
+exactly what hid the model's identity in the bug that motivated this project — the
+"cross-model" leg was silently the same model. codebate shells out to `codex exec`
+**directly** precisely so the critic's provenance is verifiable, not delegated. The
+plugin optimizes for convenience; codebate optimizes for *independence you can audit*.
+
+They compose fine: keep the Codex plugin for delegating work, and invoke codebate
+when a decision — not a task — is what's on the table.
+
 ## Install
 
 Requires the [Codex CLI](https://github.com/openai/codex) installed and
